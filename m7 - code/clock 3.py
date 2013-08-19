@@ -6,10 +6,13 @@ class Clock():
         return self.time
 
     def convert_to_24hour(self, time12hr):
-        if self.time[-2:-1] == 'a':
+        # First extract and calculate the hour
+        if time12hr[-2:-1] == 'a':
             hour = int(time12hr[0:-2])
         else:
             hour = int(time12hr[0:-2]) + 12
+
+        # Then generate the new 24 hour time string
         if hour < 10:
             time_str = "0" + str(hour) + ":00"
         else:
