@@ -35,33 +35,6 @@ def display_window():
     root.mainloop()
 
 
-def create_line(x1, y1, x2, y2, fill='black', width=1.0):
-    """
-    Create a line from the point (x1, y1) to (x2, y2)
-    with the specified color and line width.
-    The origin is at the top-left of the window.
-    """
-    canvas.create_line(x1, y1, x2, y2, fill=fill, width=width)
-
-
-def create_rect(x1, y1, x2, y2, fill='grey', outline='black'):
-    """
-    Create a rectangle from the point (x1, y1) to (x2, y2)
-    with the specified fill and outline colors.
-    The origin is at the top-left of the window.
-    """
-    canvas.create_rectangle(x1, y1, x2, y2, outline=outline, fill=fill)
-
-
-def create_text(x, y, text="", fill='black'):
-    """
-    Create some text with the top-left corner of the text at the specified position.
-    The text will be drawn with the specified fill color.
-    The origin is at the top-left of the window.
-    """
-    canvas.create_text(x, y, text=text, fill=fill, anchor="nw")
-
-
 def move_to(x, y):
     """
     Move the "pen" to the specified position, but don't draw anything.
@@ -130,3 +103,30 @@ def turn(theta):
     global angle
 
     angle -= theta
+
+
+def create_line(x1, y1, x2, y2, fill='black', width=1.0):
+    """
+    Create a line from the point (x1, y1) to (x2, y2)
+    with the (optionally) specified color and line width.
+    The origin is at the top-left of the window.
+    """
+    canvas.create_line(x1, y1, x2, y2, fill=fill, width=width)
+
+
+def create_rect(x1, y1, x2, y2, fill='grey', outline='black'):
+    """
+    Create a rectangle from the point (x1, y1) to (x2, y2)
+    with the (optionally) specified fill and outline colors.
+    The origin is at the top-left of the window.
+    """
+    canvas.create_rectangle(x1, y1, x2, y2, outline=outline, fill=fill)
+
+
+def create_text(x, y, text="", fill='black'):
+    """
+    Create some text with the top-left corner of the text at the specified position.
+    The text will be drawn with the (optionally) specified fill color.
+    The origin is at the top-left of the window.
+    """
+    canvas.create_text(x, y, text=text, fill=fill, anchor="nw")
