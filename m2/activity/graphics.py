@@ -105,15 +105,6 @@ def pen_up():
     pen = False
 
 
-def turn(theta):
-    """
-    Turns the turtle the specified number of degrees clockwise
-    """
-    global angle
-
-    angle -= theta
-
-
 def move(distance, fill='black', width=1.0):
     """
     Moves the turtle the specified distance forward.
@@ -130,3 +121,12 @@ def move(distance, fill='black', width=1.0):
 
     xpos = x
     ypos = y
+
+
+def turn(theta):
+    """
+    Turns the turtle the specified number of degrees clockwise.
+    """
+    global angle
+
+    angle -= theta

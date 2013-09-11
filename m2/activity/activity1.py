@@ -20,11 +20,11 @@ move(50)
 pen_down()
 
 # Repeat the triangle code
-move(100)           # Moves in the current direction by the specified amount
-turn(120)           # Turns the specified # of degrees clockwise
-move(100)
+move(100, fill="cornflowerblue", width=3)  # Moves in the current direction by the specified amount
+turn(120)                       # Turns the specified # of degrees clockwise
+move(100, fill="cornflowerblue", width=3)
 turn(120)
-move(100)
+move(100, fill="cornflowerblue", width=3)
 
 
 # Finally, display the graphics that you created
