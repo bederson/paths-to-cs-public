@@ -1,9 +1,8 @@
 from graphics import *
-import math
 
 
 # First, initialize the graphics system
-init_graphics()
+init_graphics(size=400, title="Turtle Circle")
 
 # Then create your graphics
 x = 200

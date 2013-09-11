@@ -13,7 +13,7 @@ angle = 0
 pen = True
 
 
-def init_graphics(size=WINDOW_DIM):
+def init_graphics(size=WINDOW_DIM, title=""):
     """
     Call this to initialize the graphics system.
     This must be called before creating any graphics
@@ -21,6 +21,7 @@ def init_graphics(size=WINDOW_DIM):
     global root, canvas
 
     root = Tk()
+    root.wm_title(title)
     canvas = Canvas(root, width=size, height=size)
     canvas.pack()
 
@@ -106,11 +107,11 @@ def pen_up():
 
 def turn(theta):
     """
-    Turns the turtle the specified number of *degrees*
+    Turns the turtle the specified number of degrees clockwise
     """
     global angle
 
-    angle += theta
+    angle -= theta
 
 
 def move(distance, fill='black', width=1.0):
@@ -121,8 +122,8 @@ def move(distance, fill='black', width=1.0):
     global pen, xpos, ypos
 
     rad = angle * 2 * 3.14 / 180
-    x = xpos + distance * math.sin(rad)
-    y = ypos + distance * math.cos(rad)
+    x = xpos + distance * math.cos(rad)
+    y = ypos + distance * math.sin(rad)
 
     if pen:
         line_to(x, y, fill=fill, width=width)
