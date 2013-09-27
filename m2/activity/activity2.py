@@ -12,7 +12,7 @@ move_to(x, y)   # This moves the pen to the specified position
 
 # This executes the body of the for loop 100 times, once for each value of i
 # starting at 0 and ending at 99
-for i in range(0, 100):
+for i in range(400):
     move(10)    # This moves in the current direction by the specified amount
     turn(5)     # This turns the specifed number of *degrees*
 

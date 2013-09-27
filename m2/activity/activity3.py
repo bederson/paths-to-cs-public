@@ -11,7 +11,7 @@ inity = 200
 
 move_to(initx, inity)
 
-for i in range(0, 100):
+for i in range(100):
     d = i * (2 * 3.14) / 100
     x = initx + i
     y = inity + 50.0 * math.sin(d)
