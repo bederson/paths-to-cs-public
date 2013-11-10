@@ -18,6 +18,7 @@ import webapp2
 import json
 from google.appengine.api import urlfetch
 
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         word = self.request.get("word")
