@@ -16,8 +16,16 @@
 #
 import datetime
 import webapp2
+import os
+import jinja2
 from google.appengine.ext import db
+from google.appengine.api import mail
+from google.appengine.api import taskqueue
 
+
+JINJA_ENVIRONMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__))
+)
 
 class Activity(db.Model):
     runner_id = db.StringProperty()
@@ -46,6 +54,9 @@ class AddRunnerHandler(webapp2.RequestHandler):
         runner.email = email
         runner.put()
 
+        self.response.write("Runner added: " + runner.name)
+        taskqueue.add(method="GET", url="/sendsummary", params={"msg": "Runner added"})
+
 
 class AddActivityHandler(webapp2.RequestHandler):
     def get(self):
@@ -59,27 +70,63 @@ class AddActivityHandler(webapp2.RequestHandler):
         activity.duration = duration
         activity.put()
 
+        self.response.write("Activity added: " + str(distance) + " miles")
+        taskqueue.add(method="GET", url="/sendsummary", params={"msg": "Activity added"})
 
-class MainHandler(webapp2.RequestHandler):
+
+class MailSummaryHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('<b>Runners:</b><br>')
         runner_query = Runner.all()
         runner_query.order("name")
         for runner in runner_query.run():
-            self.response.write(runner)
+            body = "<b>Running summary for " + runner.name + ":</b><br>"
+            body += str(runner)
             activity_query = Activity.all()
             activity_query.filter("runner_id = ", str(runner.key().id()))
             activity_query.order("date")
-            self.response.write("<ul>")
+            body += "<ul>"
             for activity in activity_query.run():
-                self.response.write("<li>")
-                self.response.write(activity)
-            self.response.write("</ul>")
-            self.response.write("<br>")
+                body += "<li>"
+                body += str(activity)
+            body += "</ul>"
+            msg = self.request.get("msg")
+            if msg:
+                body += "<br><br>"
+                body += "This message sent because: " + msg
 
+            runner_to = runner.name + " <" + runner.email + ">"
+            message = mail.EmailMessage(sender="Ben Bederson <bederson@gmail.com>",
+                                        subject="Your running summary")
+            message.to = runner_to
+            message.html = body   # Or could use ".body"
+            message.send()
+
+            self.response.write("Message sent successfully to " + runner_to + "<br>")
+
+
+class MainHandler(webapp2.RequestHandler):
+    def get(self):
+        runner_query = Runner.all()
+        runner_query.order("name")
+        runners = []
+        for runner in runner_query.run():
+            activity_query = Activity.all()
+            activity_query.filter("runner_id = ", str(runner.key().id()))
+            activity_query.order("date")
+            runner.activities = []
+            for activity in activity_query.run():
+                runner.activities.append(activity)
+            runners.append(runner)
+
+        template_values = {
+            "runners": runners
+        }
+        template = JINJA_ENVIRONMENT.get_template('index.html')
+        self.response.write(template.render(template_values))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/addrunner', AddRunnerHandler),
-    ('/addactivity', AddActivityHandler)
+    ('/addactivity', AddActivityHandler),
+    ('/sendsummary', MailSummaryHandler)
 ], debug=True)

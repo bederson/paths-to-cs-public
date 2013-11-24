@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <b>Runners:</b><br>
+    {% for runner in runners %}
+        {{ runner }}<br>
+        <ul>
+            {% for activity in runner.activities %}
+                <li>{{ activity }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+
+</body>
+</html>
