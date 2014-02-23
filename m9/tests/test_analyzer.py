@@ -27,8 +27,9 @@ class TestAnalyzer(unittest.TestCase):
 
     def test_visitor_country(self):
         collection = Collection([Event(log) for log in TestAnalyzer.log_string.split("\n")])
+        pages = analyzer.filter_page_requests(collection)
         country_pageview = {}
-        dict_ip_collection = collection.group("ip")
+        dict_ip_collection = pages.group("ip")
         for ip, col in dict_ip_collection.items():
             country = geoip.country(ip)
             if country not in country_pageview.keys():
@@ -40,9 +41,10 @@ class TestAnalyzer(unittest.TestCase):
 
     def test_popular_pages(self):
         collection = Collection([Event(log) for log in TestAnalyzer.log_string.split("\n")])
+        pages = analyzer.filter_page_requests(collection)
         # canonical code
         url_pageview = {}
-        dict_req_events = collection.group("http_request")
+        dict_req_events = pages.group("http_request")
         for request, col in dict_req_events.items():
             url = request.split(" ")[1]
             if url not in url_pageview.keys():
@@ -54,9 +56,10 @@ class TestAnalyzer(unittest.TestCase):
 
     def test_referrers(self):
         collection = Collection([Event(log) for log in TestAnalyzer.log_string.split("\n")])
+        pages = analyzer.filter_page_requests(collection)
         # canonical code
         ref_pageview = {}
-        ref_groups = collection.group("referrer")
+        ref_groups = pages.group("referrer")
         for referrer in ref_groups.keys():
             if "www.cs.umd.edu/~bederson" in referrer: continue    # ignore referrers within the self domain
             if referrer not in ref_pageview.keys():
