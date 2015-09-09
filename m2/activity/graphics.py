@@ -85,7 +85,7 @@ def move(distance, fill='black', width=1.0):
     """
     global pen, xpos, ypos
 
-    rad = angle * 2 * 3.14 / 180
+    rad = angle * 2 * 3.14 / 360
     x = xpos + distance * math.cos(rad)
     y = ypos + distance * math.sin(rad)
 
