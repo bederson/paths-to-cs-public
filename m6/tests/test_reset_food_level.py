@@ -21,12 +21,12 @@ class TestResetFoodLevel(unittest.TestCase):
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY], ]
-        food_level = [[-1, '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', '']]
+        food_level = [[5, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0]]
         test_world = World(WORLD_DIM, NUM_FOODS)
         test_world.grid = world
         test_world.food_level = food_level
@@ -41,12 +41,12 @@ class TestResetFoodLevel(unittest.TestCase):
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY], ]
-        food_level = [[-1, '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', '']]
+        food_level = [[5, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0]]
         test_world = World(WORLD_DIM, NUM_FOODS)
         test_world.grid = world
         test_world.food_level = food_level
