@@ -40,7 +40,7 @@ class TestMoveAndEat(unittest.TestCase):
         food_level = test_world.get_food_level(0, 0)
         self.assertEqual(0, creature_hunger, "The creature (hunger level:1) moves and eats a food. Then its hunger level becomes 0.")
         self.assertEqual([0, 0], creature_location, "After move_and_eat(world,[0,0]) executed, the creature should be at [0,0].")
-        self.assertEqual(FOOD_DEFAULT, food_level, "After move_and_eat(world,[0,0]) executed, the food at [0,0]'s level becomes the default value(-1).")
+        self.assertEqual(FOOD_DEFAULT, food_level, "After move_and_eat(world,[0,0]) executed, the food at [0,0]'s level becomes the default value.")
 
     def test_move_and_eat_not_hungry(self):
         world = [[CELL_FOOD, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
@@ -49,12 +49,12 @@ class TestMoveAndEat(unittest.TestCase):
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY], ]
-        food_level = [[1, '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', '']]
+        food_level = [[1, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0]]
         test_world = World(6, 1)
         test_world.grid = world
         test_world.food_level = food_level
@@ -75,12 +75,12 @@ class TestMoveAndEat(unittest.TestCase):
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                  [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY], ]
-        food_level = [['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', ''],
-                      ['', '', '', '', '', '']]
+        food_level = [[0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0]]
         test_world = World(6, 0)
         test_world.grid = world
         test_world.food_level = food_level
@@ -92,6 +92,6 @@ class TestMoveAndEat(unittest.TestCase):
         food_level = test_world.get_food_level(0, 0)
         self.assertEqual(1, creature_hunger, "If there's no food at the destination, move_and_eat method does not change the hunger level of the creature.")
         self.assertEqual([0, 1], creature_location, "If there's no food at the destination, move_and_eat method does not change the location of the creature.")
-        self.assertEqual('', food_level, "If there's not food at the destination, get_food_level(destination) should return ''.")
+        self.assertEqual(0, food_level, "If there's not food at the destination, get_food_level(destination) should return 0.")
 
 unittest.main()

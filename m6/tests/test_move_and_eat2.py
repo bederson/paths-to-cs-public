@@ -16,12 +16,12 @@ class ReleaseTestMoveAndEat(unittest.TestCase):
                      [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                      [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                      [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY], ]
-            food_level = [['', '', '', '', '', ''],
-                          ['', '', '', '', '', ''],
-                          ['', '', '', '', '', ''],
-                          ['', '', '', '', '', ''],
-                          ['', '', '', '', '', ''],
-                          ['', '', '', '', '', '']]
+            food_level = [[0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0]]
             test_world = World(WORLD_DIM, NUM_FOODS)
             test_world.grid = world
             test_world.food_level = food_level
@@ -45,12 +45,12 @@ class ReleaseTestMoveAndEat(unittest.TestCase):
                      [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                      [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY],
                      [CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY], ]
-            food_level = [['', '', '', '', '', ''],
-                          ['', '', '', '', '', ''],
-                          ['', '', '', '', '', ''],
-                          ['', '', '', '', '', ''],
-                          ['', '', '', '', '', ''],
-                          ['', '', '', '', '', '']]
+            food_level = [[0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0]]
             test_world = World(WORLD_DIM, NUM_FOODS)
             test_world.grid = world
             test_world.food_level = food_level
