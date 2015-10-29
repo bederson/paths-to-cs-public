@@ -27,7 +27,7 @@ class TestEatAllFood(unittest.TestCase):
             set_world(new_world)
             creature_location = randint(0, world_size-1)
             set_creature_location(creature_location)
-            starting_hunger = randint(0, amount_of_food)
+            starting_hunger = randint(0, 9)
             set_creature_hunger_level(starting_hunger)
             state_before = "\n[BEFORE] world=\n" + str(get_world()) + "\ncreature=" + str(creature) +"\n"
             eat_all_food()
@@ -36,7 +36,7 @@ class TestEatAllFood(unittest.TestCase):
             for index, cell in enumerate(get_world()):
                 if cell == CELL_FOOD:
                     food_left += 1
-            msg = "\nThis test generates very small and very large worlds and randomy places food in each of them. It then calls the eat_all_food() method.\n" \
+            msg = "\nThis test generates very small and very large worlds and randomly places food in each of them. It then calls the eat_all_food() method.\n" \
                   " When the creature is done eating, this test verifies that the hunger level is reduced exactly by the same amount as the food eaten."
             vars = "world size = " + str(world_size)
             vars += ", starting location = " + str(creature_location)
@@ -45,7 +45,7 @@ class TestEatAllFood(unittest.TestCase):
             vars += ", food left = " + str(food_left)
             vars += ", creature hunger level = " + str(get_creature_hunger_level())
             self.assertEqual(starting_hunger-(amount_of_food-food_left), get_creature_hunger_level(),msg+state_before+state_after+vars)
-            self.assertEqual(amount_of_food-starting_hunger, food_left, msg+state_before+state_after+vars)
+            self.assertEqual(max(amount_of_food-starting_hunger, 0), food_left, msg+state_before+state_after+vars)
 
 
 unittest.main()
