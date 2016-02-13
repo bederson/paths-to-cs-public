@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  padding: 1em;
+}
+
+.login {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+form input, form button {
+  display: block;
+  width: 100%;
+  margin: 1em 0;
+  box-shadow: none;
+  border: 0;
+  outline: 0;
+  padding: 1em;
+  box-sizing: border-box;
+  font-size: 0.9em;
+}
+
+form input, form button, li {
+  border-radius: 8px;
+}
+
+form input {
+  border: 1px solid #ddd;
+}
+
+form button {
+  background: #3782FF;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+ul li {
+  padding: 1em;
+  margin: 1em 0;
+  background: #eee;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #444;
+}
+
+ul li a:hover {
+  text-decoration: underline;
+}
+
+.conversations .message, .conversations .last_message {
+  font-style: italic;
+}
+
+.conversations .unread {
+  font-weight: bold;
+}
+
+.conversations li a {
+  display: block;
+}
+
+.messages li.me {
+  background: #3782FF;
+  color: white;
+  text-align: right;
+  max-width: 60%;
+  float: right;
+  margin-right: 0;
+  margin-left: 40%;
+}
+
+a {
+  color: #3782FF;
+  text-decoration: none;
+}
+
+.messages:before, .messages:after {
+  content: "";
+  display: table;
+}
+.messages:after {
+    clear: both;
+}
+
+.messages li {
+  display: inline-block;
+  max-width: 60%;
+  margin-right: 40%;
+}
+
+.messages form {
+  position: relative;
+  margin-top: 4em;
+}
+
+.messages button {
+  position: absolute;
+  top:1px;
+  right:0;
+  max-width: 20%;
+  margin: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
