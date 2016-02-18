@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return render_template('file.html', name='Person', age=50)
+    return render_template('file.html', name='Person', age=30)
 
 @app.route('/test_loop')
 def loop():
